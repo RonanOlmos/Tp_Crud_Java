@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import main.crud.CategoriaCrud;
 import main.models.Categoria;
-import main.utils.EntradaDeDatos;
+import main.utils.InputUtils;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class Main {
             System.out.println("2) CRUD de Categorías");
             System.out.println("0) Salir");
             System.out.print("Opción: ");
-            String linea = EntradaDeDatos.getScanner().nextLine();
+            String linea = InputUtils.getScanner().nextLine();
 
             try {
                 opcion = Integer.parseInt(linea.trim());
@@ -37,7 +37,7 @@ public class Main {
                     int op;
                     do {
                         categCrud.mostrarOpciones();
-                        op = Integer.parseInt(EntradaDeDatos.getScanner().nextLine().trim());
+                        op = Integer.parseInt(InputUtils.getScanner().nextLine().trim());
                         switch (op) {
                             case 1 -> categCrud.crear();
                             case 2 -> categCrud.listar();

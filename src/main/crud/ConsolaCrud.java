@@ -2,10 +2,10 @@ package main.crud;
 
 import java.util.Scanner;
 
-import main.utils.EntradaDeDatos;
+import main.utils.InputUtils;
 
 public abstract class ConsolaCrud<T> {
-    protected final Scanner scanner = EntradaDeDatos.getScanner(); // Scanner compartido
+    protected final Scanner scanner = InputUtils.getScanner(); // Scanner compartido
 
     public abstract void crear();
     public abstract void listar();
