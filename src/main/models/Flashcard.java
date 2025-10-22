@@ -1,5 +1,7 @@
 package main.models;
 
+import java.time.format.DateTimeFormatter;
+
 public class Flashcard extends Card{
     private String pregunta;
     private String respuesta;
@@ -33,10 +35,10 @@ public class Flashcard extends Card{
     }
     @Override
     public String toString() {
-        return "Flashcard[Id : " + getId() +", "+
-               getCategoria().toString() + ", Pregunta : " + pregunta +
-               ", Respuesta : " + respuesta + ", Nivel : " + nivel +
-               ", Fecha de creacion : " + getFechaCreacion() +"]";
+        return "Flashcard{\nid : " + getId() +", \nCategoria : "+
+               getCategoria().getNombre() + ", \nPregunta : " + pregunta +
+               ", \nRespuesta : " + respuesta + ", \nNivel : " + nivel +
+               ", \nFecha de creacion : " + getFechaCreacion().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) +"\n}";
     }
 
 }
