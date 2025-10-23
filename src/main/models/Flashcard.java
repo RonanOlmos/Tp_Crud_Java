@@ -7,9 +7,9 @@ public class Flashcard extends Card{
     private String respuesta;
     private Nivel nivel;
 
-    public Flashcard(int id, Categoria categoria,
+    public Flashcard(Categoria categoria,
                      String pregunta, String respuesta, Nivel nivel) {
-        super(id, categoria);
+        super(categoria);
         this.pregunta = pregunta;
         this.respuesta = respuesta;
         this.nivel = nivel;

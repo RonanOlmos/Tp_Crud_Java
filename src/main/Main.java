@@ -8,6 +8,7 @@ import main.models.Card;
 import main.models.Categoria;
 import main.models.Flashcard;
 import main.models.Nivel;
+import main.utils.ConsolaUtils;
 import main.utils.InputUtils;
 
 public class Main {
@@ -19,12 +20,14 @@ public class Main {
         categorias.add(new Categoria("Hogar"));
         categorias.add(new Categoria("Libros"));
 
-        cartas.add(new Flashcard(0, categorias.get(0), "Que significa CPU en informatica?", "Unidad Central de Procesamiento", Nivel.FACIL));
+        cartas.add(new Flashcard(categorias.get(0), "Que significa CPU en informatica?", "Unidad Central de Procesamiento", Nivel.FACIL));
         final CategoriaCrud categCrud = new CategoriaCrud(categorias);
         final CardCrud cardCrud = new CardCrud(cartas, categorias);
 
         int opcion;
         do {
+            
+            ConsolaUtils.limpiarConsola();
             System.out.println("\n=== Menu Principal ===");
             System.out.println("1) CRUD de Cartas");
             System.out.println("2) CRUD de Categorias");
@@ -42,11 +45,19 @@ public class Main {
                 case 1 -> {
                     int op;
                     do {
+                        ConsolaUtils.limpiarConsola();
                         cardCrud.mostrarOpciones();
                         op = Integer.parseInt(InputUtils.getScanner().nextLine().trim());
                         switch (op) {
-                            case 1 -> cardCrud.crear();
-                            case 2 -> cardCrud.listar();
+                            case 1 -> {
+                                cardCrud.crear();
+                                ConsolaUtils.pausa();
+                            }
+                            case 2 -> {
+                                ConsolaUtils.limpiarConsola();
+                                cardCrud.listar();
+                                ConsolaUtils.pausa();
+                            }
                             case 3 -> cardCrud.actualizar();
                             case 4 -> cardCrud.eliminar();
                             case 0 -> System.out.println("Volviendo al menu principal...");
@@ -57,6 +68,7 @@ public class Main {
                 case 2 -> {
                     int op;
                     do {
+                        ConsolaUtils.limpiarConsola();
                         categCrud.mostrarOpciones();
                         op = Integer.parseInt(InputUtils.getScanner().nextLine().trim());
                         switch (op) {
@@ -69,7 +81,10 @@ public class Main {
                         }
                     } while (op != 0);
                 }
-                case 0 -> System.out.println("Hasta luego!");
+                case 0 -> {
+                    ConsolaUtils.limpiarConsola();
+                    System.out.println("Hasta luego!");
+                }
                 default -> System.out.println("Opcion invalida");
             }
         } while (opcion != 0);

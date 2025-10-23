@@ -9,7 +9,7 @@ public abstract class Card {
 
     private static int contador = 1;
 
-    public Card (int id, Categoria categoria){
+    public Card (Categoria categoria){
         this.id = contador++;
         this.categoria = categoria;
         this.fechaCreacion = LocalDateTime.now();

@@ -7,9 +7,9 @@ public class Triviacard extends Card {
     private List<String> opciones;
     private int indiceCorrecto;
 
-    public Triviacard(int id, Categoria categoria, 
+    public Triviacard(Categoria categoria, 
                       String pregunta, List<String> opciones, int indiceCorrecto) {
-        super(id, categoria);
+        super(categoria);
         this.pregunta = pregunta;
         this.opciones = opciones;
         this.indiceCorrecto = indiceCorrecto;
@@ -40,7 +40,7 @@ public class Triviacard extends Card {
                ", Opciones : " + opciones.toString() +
                ", Indice Correcto : " + indiceCorrecto +
                ", Fecha de creacion : " + getFechaCreacion() +"]";
-    }
+    } 
 
     
 }

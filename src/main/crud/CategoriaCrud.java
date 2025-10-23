@@ -23,9 +23,10 @@ public class CategoriaCrud extends ConsolaCrud<Categoria> {
             System.out.println("No hay categorias actualmente...");
         } else {
             for (Categoria c : categorias) {
-                System.out.println(c);
+                System.out.print(c);
             }
         }
+        
     }
 
     @Override
