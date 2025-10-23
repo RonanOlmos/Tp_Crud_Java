@@ -1,5 +1,6 @@
 package main.models;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Triviacard extends Card {
@@ -33,13 +34,19 @@ public class Triviacard extends Card {
     void setIndiceCorrecto(int indiceCorrecto) {
         this.indiceCorrecto = indiceCorrecto;
     }
+    void mostrarPreguntas(){
+        for (String string : opciones) 
+            System.out.println("\t"+string+"\n");
+    }
     @Override
     public String toString() {
-        return "Triviacard[Id : " + getId() +", "+
-               getCategoria().toString() + ", Pregunta : " + pregunta +
-               ", Opciones : " + opciones.toString() +
-               ", Indice Correcto : " + indiceCorrecto +
-               ", Fecha de creacion : " + getFechaCreacion() +"]";
+        return "Triviacard{\nid : " + getId() +
+                ", \nCategoria : "+ getCategoria().getNombre() + 
+                ", \nPregunta : " + pregunta +
+                ", \nOpciones : " + opciones.toString() +
+                ", \nIndice Correcto : " + indiceCorrecto +
+                ", \nFecha de creacion : " + getFechaCreacion().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) +
+                "\n}";
     } 
 
     

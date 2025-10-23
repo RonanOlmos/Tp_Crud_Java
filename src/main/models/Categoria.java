@@ -23,6 +23,6 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "Categoria[Id : " + id + ", Nombre : "+ nombre +"]\n";
+        return "Categoria[id : " + id + ", Nombre : "+ nombre +"]";
     }
 }

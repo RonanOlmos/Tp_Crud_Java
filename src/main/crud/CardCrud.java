@@ -6,6 +6,7 @@ import main.models.Card;
 import main.models.Categoria;
 import main.models.Flashcard;
 import main.models.Nivel;
+import main.models.Triviacard;
 import main.utils.ConsolaUtils;
 
 public class CardCrud extends ConsolaCrud<Card>{
@@ -31,9 +32,9 @@ public class CardCrud extends ConsolaCrud<Card>{
                 ConsolaUtils.pausa();
                 return;
             }
-            String pregunta = leerTexto("Ingrese la pregunta del Flashcard: ");
-            String respuesta = leerTexto("Ingrese la respuesta del Flashcard: ");
-            System.out.println("Seleccione el nivel de dificultad:");
+            String pregunta = leerTexto("Ingrese la pregunta de la Flashcard: ");
+            String respuesta = leerTexto("Ingrese la respuesta de la Flashcard: ");
+            System.out.println("Seleccione el nivel de dificultad: ");
             System.out.println("1. FACIL");
             System.out.println("2. MEDIO");
             System.out.println("3. DIFICIL");
@@ -41,40 +42,70 @@ public class CardCrud extends ConsolaCrud<Card>{
             int opcion = leerEntero("Opción: ");
 
             switch (opcion) {
-                case 1: nivel = Nivel.FACIL;
-                case 2: nivel = Nivel.MEDIO;
-                case 3: nivel = Nivel.DIFICIL;
-                default:
+                case 1 -> nivel = Nivel.FACIL;
+                case 2 -> nivel = Nivel.MEDIO;
+                case 3 -> nivel = Nivel.DIFICIL;
+                default -> {
                     System.out.println("Opcion invalida. Se asigno MEDIO por defecto.");
                     nivel = Nivel.MEDIO;
+                }
             }
             ConsolaUtils.limpiarConsola();
-            System.out.println("Categorias disponibles:");
-            for (Categoria c : categorias) {
-                System.out.print(c);
-            }
-            int idCat = leerEntero("Elegí id de categoría: ");
-            Categoria seleccionada = null;
-            for (Categoria c : categorias) {
-                if (c.getId() == idCat) { seleccionada = c; break; }
-            }
+            System.out.println("Selecciona una de las categorias disponibles:");
+            categorias.forEach(System.out::println);
+            int idCat = leerEntero("Elige el id de categoria: ");
+            Categoria seleccionada = categorias.stream()
+                                               .filter(c -> c.getId() == idCat)
+                                               .findFirst()
+                                               .orElse(null);
             if (seleccionada != null) {
                 cartas.add(new Flashcard(seleccionada,pregunta,respuesta,nivel));
+                ConsolaUtils.limpiarConsola();
                 System.out.println("Flashcard creada.");
             } else {
-                System.out.println("No existe la categoria.");
+                System.out.println("Error!!! No existe la categoria, la Flashcard no fue creada!");
             }
             
             
-        } /*else if (op == 2) {
-            String nombre = leerTexto("Nombre: ");
-            double precio = leerDouble("Precio: ");
-            int duracion = leerEntero("Duración (horas): ");
-            productos.add(new Servicio(nombre, precio, duracion));
-            System.out.println("Servicio creado.");
+        }else if (op == 2) {
+            if (categorias.isEmpty()) {
+                ConsolaUtils.limpiarConsola();
+                System.out.println("No tienes categorias creadas.");
+                ConsolaUtils.pausa();
+                return;
+            }
+
+            ConsolaUtils.limpiarConsola();
+            String pregunta = leerTexto("Ingrese el nombre de la pregunta: ");
+
+            ArrayList<String> opciones = new ArrayList<>();
+            for (int i = 0; i <= 2; i++) {
+                String opcionTexto = leerTexto("Ingrese la opcion " + i + ": ");
+                opciones.add(opcionTexto);
+            }
+            int indice;
+            do {
+                indice = leerEntero("Ingrese el indice de la respuesta correcta: ");
+            } while (indice < 0 || indice >= opciones.size());
+            
+            ConsolaUtils.limpiarConsola();
+            System.out.println("Selecciona una de las categorias disponibles:");
+            categorias.forEach(System.out::println);
+            int idCat = leerEntero("Elige el id de categoria: ");
+            Categoria seleccionada = categorias.stream()
+                                               .filter(c -> c.getId() == idCat)
+                                               .findFirst()
+                                               .orElse(null);
+            if (seleccionada != null) {
+                cartas.add(new Triviacard(seleccionada,pregunta,opciones,indice));
+                ConsolaUtils.limpiarConsola();
+                System.out.println("Flashcard creada.");
+            } else {
+                System.out.println("Error!!! No existe la categoria, la Flashcard no fue creada!");
+            }
         } else {
             System.out.println("Opción inválida.");
-        }*/
+        }
     }
 
     @Override

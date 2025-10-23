@@ -58,8 +58,16 @@ public class Main {
                                 cardCrud.listar();
                                 ConsolaUtils.pausa();
                             }
-                            case 3 -> cardCrud.actualizar();
-                            case 4 -> cardCrud.eliminar();
+                            case 3 -> {
+                                ConsolaUtils.limpiarConsola(); 
+                                cardCrud.actualizar(); 
+                                ConsolaUtils.pausa();
+                            }
+                            case 4 -> {
+                                ConsolaUtils.limpiarConsola();
+                                cardCrud.eliminar();
+                                ConsolaUtils.pausa();
+                            }
                             case 0 -> System.out.println("Volviendo al menu principal...");
                             default -> System.out.println("Opcion invalida");
                         }
