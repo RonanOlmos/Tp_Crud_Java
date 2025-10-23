@@ -80,10 +80,25 @@ public class Main {
                         categCrud.mostrarOpciones();
                         op = Integer.parseInt(InputUtils.getScanner().nextLine().trim());
                         switch (op) {
-                            case 1 -> categCrud.crear();
-                            case 2 -> categCrud.listar();
-                            case 3 -> categCrud.actualizar();
-                            case 4 -> categCrud.eliminar();
+                            case 1 -> {
+                                categCrud.crear();
+                                ConsolaUtils.pausa();
+                            }
+                            case 2 -> {
+                                ConsolaUtils.limpiarConsola();
+                                categCrud.listar();
+                                ConsolaUtils.pausa();
+                            }
+                            case 3 -> {
+                                ConsolaUtils.limpiarConsola(); 
+                                categCrud.actualizar(); 
+                                ConsolaUtils.pausa();
+                            }
+                            case 4 -> {
+                                ConsolaUtils.limpiarConsola();
+                                categCrud.eliminar();
+                                ConsolaUtils.pausa();
+                            }
                             case 0 -> System.out.println("Volviendo al menu principal...");
                             default -> System.out.println("Opcion invalida");
                         }
