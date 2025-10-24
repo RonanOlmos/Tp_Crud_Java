@@ -110,6 +110,7 @@ public class CardCrud extends ConsolaCrud<Card>{
 
     @Override
     public void listar() {
+        
         if (cartas.isEmpty()) {
             System.out.println("No hay cartas actualmente...");
         } else {
@@ -119,7 +120,10 @@ public class CardCrud extends ConsolaCrud<Card>{
 
     @Override
     public void actualizar() {
-
+        if (cartas.isEmpty()){
+            System.out.println("No hay cartas actualmente...");
+            return;
+        }
         listar();
         int idCarta = leerEntero("Ingrese el id de la carta a modificar: ");
         Card carta = cartas.stream()
@@ -142,7 +146,15 @@ public class CardCrud extends ConsolaCrud<Card>{
 
     @Override
     public void eliminar() {
-        
+        if (cartas.isEmpty()){
+            System.out.println("No hay cartas actualmente...");
+            return;
+        }
+        ConsolaUtils.limpiarConsola();
+        listar();
+        int id = leerEntero("Ingrese el id de la carta a eliminar: ");
+        boolean eliminado = cartas.removeIf(c -> c.getId() == id);
+        System.out.println(eliminado ? "Carta eliminada...": "No existe ese id...");
     }
 
     private Categoria buscarCategoriaPorId(ArrayList<Categoria> categorias, int idCat){
@@ -154,6 +166,10 @@ public class CardCrud extends ConsolaCrud<Card>{
     }
 
     private void modificarFlashcard(Flashcard flashcard){
+        if (cartas.isEmpty()){
+            System.out.println("No hay cartas actualmente...");
+            return;
+        }
         int opcion;
         do {
             ConsolaUtils.limpiarConsola();
@@ -228,17 +244,21 @@ public class CardCrud extends ConsolaCrud<Card>{
                 }
 
                 case 2 -> {
-                    //String nuevaRespuesta = leerTexto("Ingrese una nueva respuesta: ");
-                    //flashcard.setRespuesta(nuevaRespuesta);
+                    ArrayList<String> nuevasRespuestas = new ArrayList<>();
+                    for(int i = 0; i < 3; i++) {
+                        nuevasRespuestas.add(leerTexto("Ingrese una nueva respuesta: "));
+                    }
+                    triviacard.setOpciones(nuevasRespuestas);
                 }
 
                 case 3 -> {
-                    
-                    
+                    System.out.println(triviacard.getOpciones());
+                    int nuevoIndiceCorrecto = leerEntero("Ingrese un el indice de la respuesta correcta: ");
+                    triviacard.setIndiceCorrecto(nuevoIndiceCorrecto);
                 }
                 case 0 -> System.out.println("Saliendo");
                 default -> System.out.println("Opcion invalida");
             }
         } while (opcion != 0);
-    };
+    }
 }

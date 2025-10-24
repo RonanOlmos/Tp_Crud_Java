@@ -53,7 +53,7 @@ public class CategoriaCrud extends ConsolaCrud<Categoria> {
     public void eliminar() {
         ConsolaUtils.limpiarConsola();
         listar();
-        int id = leerEntero("Id de la categoría a eliminar:\n");
+        int id = leerEntero("Id de la categoria a eliminar:\n");
         boolean eliminado = categorias.removeIf(c -> c.getId() == id);
         System.out.println(eliminado ? "Categoria eliminada...": "No existe ese id...");
     }
