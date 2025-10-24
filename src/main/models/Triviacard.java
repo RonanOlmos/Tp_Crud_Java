@@ -16,28 +16,25 @@ public class Triviacard extends Card {
         this.indiceCorrecto = indiceCorrecto;
     }
 
-    String getPregunta() {
+    public String getPregunta() {
         return pregunta;
     }
-    void setPregunta(String pregunta) {
+    public void setPregunta(String pregunta) {
         this.pregunta = pregunta;
     }
-    List<String> getOpciones() {
+    public List<String> getOpciones() {
         return opciones;
     }
-    void setOpciones(List<String> opciones) {
+    public void setOpciones(List<String> opciones) {
         this.opciones = opciones;
     }
-    int getIndiceCorrecto() {
+    public int getIndiceCorrecto() {
         return indiceCorrecto;
     }
-    void setIndiceCorrecto(int indiceCorrecto) {
+    public void setIndiceCorrecto(int indiceCorrecto) {
         this.indiceCorrecto = indiceCorrecto;
     }
-    void mostrarPreguntas(){
-        for (String string : opciones) 
-            System.out.println("\t"+string+"\n");
-    }
+    
     @Override
     public String toString() {
         return "Triviacard{\nid : " + getId() +

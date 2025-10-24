@@ -38,7 +38,8 @@ public class Flashcard extends Card{
         return "Flashcard{\nid : " + getId() +
                 ", \nCategoria : "+ getCategoria().getNombre() + 
                 ", \nPregunta : " + pregunta +
-                ", \nRespuesta : " + respuesta + ", \nNivel : " + nivel +
+                ", \nRespuesta : " + respuesta + 
+                ", \nNivel : " + nivel +
                 ", \nFecha de creacion : " + getFechaCreacion().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) +
                 "\n}";
     }

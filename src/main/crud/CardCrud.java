@@ -8,6 +8,7 @@ import main.models.Flashcard;
 import main.models.Nivel;
 import main.models.Triviacard;
 import main.utils.ConsolaUtils;
+import main.utils.InputUtils;
 
 public class CardCrud extends ConsolaCrud<Card>{
     private final ArrayList<Categoria> categorias;
@@ -118,6 +119,7 @@ public class CardCrud extends ConsolaCrud<Card>{
 
     @Override
     public void actualizar() {
+
         listar();
         int idCarta = leerEntero("Ingrese el id de la carta a modificar: ");
         Card carta = cartas.stream()
@@ -127,8 +129,13 @@ public class CardCrud extends ConsolaCrud<Card>{
         if(carta == null){
             ConsolaUtils.limpiarConsola();
             System.out.println("No existe una carta con el id: " + idCarta);
-            ConsolaUtils.pausa();
             return;
+        }
+
+        if(carta instanceof Flashcard flashcard){
+            modificarFlashcard(flashcard);
+        } else if(carta instanceof Triviacard triviacard){
+            modificarTriviacard(triviacard);
         }
         
     }
@@ -146,5 +153,92 @@ public class CardCrud extends ConsolaCrud<Card>{
         return seleccionada;
     }
 
-    
+    private void modificarFlashcard(Flashcard flashcard){
+        int opcion;
+        do {
+            ConsolaUtils.limpiarConsola();
+            System.out.println(flashcard);
+            System.out.println("Selecciona que quieres cambiar de la flashcard:");
+            System.out.println("1) Modificar pregunta");
+            System.out.println("2) Modificar respuesta");
+            System.out.println("3) Modificar nivel");
+            System.out.println("0) Salir");
+            String linea = InputUtils.getScanner().nextLine();
+            
+            try {
+                opcion = Integer.parseInt(linea.trim());
+            } catch (NumberFormatException e) {
+                opcion = -1;
+            }
+
+            switch (opcion) {
+                case 1 -> {
+                    String nuevaPregunta= leerTexto("Ingrese una nueva pregunta: ");
+                    flashcard.setPregunta(nuevaPregunta);
+                }
+
+                case 2 -> {
+                    String nuevaRespuesta = leerTexto("Ingrese una nueva respuesta: ");
+                    flashcard.setRespuesta(nuevaRespuesta);
+                }
+
+                case 3 -> {
+                    System.out.println("Selecciona un nuevo nivel:");
+                    System.out.println("1) Facil");
+                    System.out.println("2) Medio");
+                    System.out.println("3) Dificil");
+                    int n = leerEntero("Opcion: ");
+                    switch (n) {
+                        case 1 -> flashcard.setNivel(Nivel.FACIL);
+                        case 2 -> flashcard.setNivel(Nivel.MEDIO);
+                        case 3 -> flashcard.setNivel(Nivel.DIFICIL);
+                        default -> System.out.println("Nivel inválido. No se cambió.");
+                    }
+                    System.out.println("Nivel actualizado.");
+                    
+                }
+                case 0 -> System.out.println("Saliendo");
+                default -> System.out.println("Opcion invalida");
+            }
+        } while (opcion != 0);
+    }
+
+    private void modificarTriviacard(Triviacard triviacard){
+        int opcion;
+        do {
+            ConsolaUtils.limpiarConsola();
+            System.out.println(triviacard);
+            System.out.println("Selecciona que quieres cambiar de la triviacard:");
+            System.out.println("1) Modificar pregunta");
+            System.out.println("2) Modificar respuestas");
+            System.out.println("3) Modificar respuesta correcta");
+            System.out.println("0) Salir");
+            String linea = InputUtils.getScanner().nextLine();
+            
+            try {
+                opcion = Integer.parseInt(linea.trim());
+            } catch (NumberFormatException e) {
+                opcion = -1;
+            }
+
+            switch (opcion) {
+                case 1 -> {
+                    String nuevaPregunta= leerTexto("Ingrese una nueva pregunta: ");
+                    triviacard.setPregunta(nuevaPregunta);
+                }
+
+                case 2 -> {
+                    //String nuevaRespuesta = leerTexto("Ingrese una nueva respuesta: ");
+                    //flashcard.setRespuesta(nuevaRespuesta);
+                }
+
+                case 3 -> {
+                    
+                    
+                }
+                case 0 -> System.out.println("Saliendo");
+                default -> System.out.println("Opcion invalida");
+            }
+        } while (opcion != 0);
+    };
 }
