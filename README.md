@@ -27,8 +27,13 @@ El objetivo del proyecto fue para practicar la **Programación Orientada a Objet
 - Abrir el proyecto en Visual Studio Code.  
 - Compilar con el botón **Run**
 
-### Ejemplo de **Flashcard**
+---
 
+## Ejemplos
+---
+### Ejemplo de **Flashcard**
+---
+<pre>
 Flashcard {
   id: 1,
   categoría: Ciencia,
@@ -37,9 +42,10 @@ Flashcard {
   nivel: MEDIO
   fecha de creación: 22/10/2025 10:15
 }
-
+</pre>
 ### Ejemplo de **Triviacard**
-
+---
+<pre>
 Triviacard {
   id: 2,
   categoría: Historia,
@@ -48,5 +54,5 @@ Triviacard {
   índice correcto: 0
   fecha de creación: 22/10/2025 10:15
 }
-
+</pre>
 ---
