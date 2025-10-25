@@ -1,18 +1,20 @@
-## Getting Started
+# Flashcard CRUD (Aplicación de consola de Java)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Esta aplicacion de consola desarrollada en la version de **Java 17** permite gestionar **tarjetas de estudio (Flashcard)** y **tarjetas de pregunta tipo multiplechoice (Triviacard)**.
+El objetivo del proyecto fue para practicar la **Programación Orientada a Objetos**.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## Funcionalidades principales
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Crear, listar, modificar y eliminar tarjetas Flashcard y Triviacard
+- Cada tarjeta pertenece a una **categoría**
+- Cada carta tiene su **nivel** de dificultad a travez de `enum`
+- Limpieza y control de consola con `ConsolaUtils`
+- Uso de **conceptos POO**:
+  - **Herencia:** clase padre `Card`, extendida por `Flashcard` y `Triviacard`
+  - **Abstracción:** clase abstracta `Card`
+  - **Encapsulamiento:** atributos privados con getters y setters
+  - **Polimorfismo:** `toString()` y métodos sobrescritos en las subclases
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
