@@ -17,8 +17,8 @@ public class Main {
         final ArrayList<Categoria> categorias = new ArrayList<>();
         final ArrayList<Card> cartas = new ArrayList<>();
         categorias.add(new Categoria("Tecnología"));
-        categorias.add(new Categoria("Hogar"));
-        categorias.add(new Categoria("Libros"));
+        categorias.add(new Categoria("Ciencia"));
+        categorias.add(new Categoria("Historia"));
 
         cartas.add(new Flashcard(categorias.get(0), "Que significa CPU en informatica?", "Unidad Central de Procesamiento", Nivel.FACIL));
         final CategoriaCrud categCrud = new CategoriaCrud(categorias);
