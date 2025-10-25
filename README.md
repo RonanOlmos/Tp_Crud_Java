@@ -9,7 +9,7 @@ El objetivo del proyecto fue para practicar la **Programación Orientada a Objet
 
 - Crear, listar, modificar y eliminar tarjetas **Flashcard** y **Triviacard**
 - Cada tarjeta pertenece a una **categoría**
-- Cada **Flashcard** tiene su **nivel** de dificultad a travez de `enum`
+- Cada **Flashcard** tiene su **nivel** de dificultad a través de `enum`
 - Cada **Triviacard** tiene su pregunta y 3 posibles respuestas, solo una correcta
 - Limpieza y control de consola con `ConsolaUtils`
 - Cada tarjeta tiene la fecha y hora de cuando fue creada con `LocalDateTime`
@@ -55,4 +55,10 @@ Triviacard {
   fecha de creación: 22/10/2025 10:15
 }
 </pre>
+
 ---
+
+## Tecnologías usadas
+- Java 17  
+- Visual Studio Code  
+- Git / GitHub
