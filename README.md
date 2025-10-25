@@ -30,7 +30,7 @@ El objetivo del proyecto fue para practicar la **Programación Orientada a Objet
 ---
 
 ## Ejemplos
----
+
 ### Ejemplo de **Flashcard**
 ---
 <pre>
